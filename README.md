@@ -83,9 +83,9 @@ The first part of the screenshot is my query, and the second part is a portion o
 <p align="center">
 Summary: <br/>
  
-I changed multiple permissions to match the level of authorization my organization wanted for files and directories in the projects directory. The first step in this was using ls -la to check the permissions for the directory. This informed my decisions in the following steps. I then used the chmod command multiple times to change the permissions on files and directories.
- <br/>
- <br/>
+I applied filters to SQL queries to get specific information on login attempts and employee machines. I used two different tables, log_in_attempts and employees. I used the AND, OR, and NOT operators to filter for the specific information needed for each task. I also used LIKE and the percentage sign (%) wildcard to filter for patterns.
+<br/>
+<br/>
 
  
 <!--
