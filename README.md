@@ -69,7 +69,17 @@ The following code demonstrates how I created a SQL query to filter for employee
  <img src="https://i.imgur.com/bOHzPTz.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
  <br/>
 The first part of the screenshot is my query, and the second part is a portion of the output. This query returns all employees in the Finance and Sales departments. First, I started by selecting all data from the employees table. Then, I used a WHERE clause with OR to filter for employees who are in the Finance and Sales departments. I used the OR operator instead of AND because I want all employees who are in either department. The first condition is department = 'Finance', which filters for employees from the Finance department. The second condition is department = 'Sales', which filters for employees from the Sales department.
+
+ <p align="center">
+Retrieve all employees not in IT: <br/>
  
+My team needs to make one more security update on employees who are not in the Information Technology department. To make the update, I first have to get information on these employees.<br/>
+The following demonstrates how I created a SQL query to filter for employee machines from employees not in the  Information Technology department.
+<br/>
+ <img src="https://i.imgur.com/02gOC9n.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<br/>
+The first part of the screenshot is my query, and the second part is a portion of the output. The query returns all employees not in the Information Technology department. First, I started by selecting all data from the employees table. Then, I used a WHERE clause with NOT to filter for employees not in this department.
+
 <p align="center">
 Summary: <br/>
  
