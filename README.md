@@ -92,6 +92,206 @@ I applied filters to SQL queries to get specific information on login attempts a
 <br/>
 <br/>
 
+
+<h1> Project Title: SQL Query Filtering for Enhanced Security </h1>
+
+<h2> Project Overview: </h2>
+In this project, I addressed various security concerns within the organization's systems by leveraging SQL queries with strategic filters. The goal was to identify and investigate potential security threats and streamline the process of updating employee computers.
+
+<h3> 1. Retrieve After-Hours Failed Login Attempts: </h3>
+Objective: Investigate potential security incidents by analyzing failed login attempts after business hours.
+
+<h3> SQL Query: </h3>
+
+```
+SELECT * FROM log_in_attempts WHERE login_time > '18:00' AND success = FALSE;
+```
+
+<h3> Outcome: </h3>
+Identified and investigated after-hours failed login attempts.
+
+<h3> 2. Retrieve Login Attempts on Specific Dates: </h3>
+Objective: Investigate suspicious events on a specific date and the day before.
+
+<h3> SQL Query: </h3>
+
+```
+SELECT * FROM log_in_attempts
+WHERE login_date = '2022-05-09' OR login_date = '2022-05-08';
+```
+
+<h3> Outcome: </h3>
+
+Retrieved login attempts on the specified dates for further investigation.
+3. Retrieve Login Attempts Outside of Mexico:
+Objective: Investigate and address login attempts originating from countries other than Mexico.
+
+<h3> SQL Query: </h3>
+
+```
+SELECT * FROM log_in_attempts
+WHERE NOT country LIKE 'MEX%';
+```
+
+<h3> Outcome: </h3>
+Identified and isolated login attempts outside of Mexico for additional scrutiny.
+
+<h3> 4. Retrieve Employees in Marketing: </h3>
+Objective: Gather information on employee machines in the Marketing department located in the East building.
+
+<h3> SQL Query: </h3>
+
+```
+SELECT * FROM employees
+WHERE department = 'Marketing' AND office LIKE 'East%';
+```
+
+<h3> Outcome: </h3>
+Obtained a list of employees in the Marketing department in the East building for computer updates.
+
+<h3> 5. Retrieve Employees in Finance or Sales: </h3>
+Objective: Gather information on employee machines in the Finance or Sales departments.
+
+<h3> SQL Query: </h3>
+
+```
+SELECT * FROM employees
+WHERE department = 'Finance' OR department = 'Sales';
+```
+
+<h3> Outcome: </h3>
+Compiled a list of employees in the Finance and Sales departments for specific security updates.
+
+<h3> 6. Retrieve All Employees Not in IT: </h3>
+Objective: Gather information on employees not in the Information Technology department for a distinct security update.
+
+<h3> SQL Query: </h3>
+
+```
+SELECT * FROM employees
+WHERE NOT department = 'Information Technology';
+```
+
+<h3> Outcome: </h3>
+Identified and isolated employees not in the IT department for targeted security measures.
+
+<h3> Summary: </h3>
+I applied targeted filters to SQL queries to extract specific information related to login attempts and employee machines. The use of AND, OR, and NOT operators, along with LIKE and wildcards, allowed for precise data retrieval, enhancing the organization's overall cybersecurity posture.
+
+
+Certainly! Here are a few more examples of cybersecurity-related projects that involve SQL queries and filtering:
+
+
+<h1> 2. Project Title: User Privilege Analysis </h1>
+
+<h3> Project Overview: </h3>
+To strengthen user access controls, I conducted an analysis of user privileges within the organization's database. The goal was to identify and address any unnecessary or elevated permissions.
+
+<h3> 1. Identify Superuser Accounts: </h3>
+Objective: Locate accounts with superuser privileges for potential security risks.
+
+SQL Query:
+
+sql
+Copy code
+SELECT username, privilege_level
+FROM user_accounts
+WHERE privilege_level = 'superuser';
+Outcome:
+
+Compiled a list of accounts with superuser privileges for further review and potential privilege reduction.
+2. Unused Accounts Cleanup:
+Objective: Identify and deactivate user accounts that have not been used for an extended period.
+
+SQL Query:
+
+sql
+Copy code
+SELECT username, last_login
+FROM user_accounts
+WHERE last_login < '2023-01-01';
+Outcome:
+
+Identified dormant accounts for deactivation, reducing the potential attack surface.
+Project Title: Anomaly Detection in Network Traffic
+Project Overview:
+Implemented SQL queries to analyze network traffic logs for anomalies, helping to identify potential security threats or irregularities.
+
+1. Unusual Outbound Traffic:
+Objective: Identify outbound network traffic patterns that deviate from the norm.
+
+SQL Query:
+
+sql
+Copy code
+SELECT source_ip, destination_ip, protocol
+FROM network_logs
+WHERE destination_ip NOT IN (SELECT trusted_ip FROM whitelist);
+Outcome:
+
+Detected and investigated unusual outbound traffic, possibly indicating a compromised system.
+2. Multiple Login Attempts from Different Locations:
+Objective: Identify instances of multiple login attempts from geographically distinct locations in a short timeframe.
+
+SQL Query:
+
+sql
+Copy code
+SELECT username, source_ip, COUNT(DISTINCT location) AS distinct_locations
+FROM login_attempts
+GROUP BY username, source_ip
+HAVING distinct_locations > 1;
+Outcome:
+
+Detected suspicious login patterns for further investigation and potential account compromise.
+Project Title: Data Exfiltration Detection
+Project Overview:
+Implemented SQL queries to monitor and detect potential data exfiltration attempts from the organization's databases.
+
+1. Unusual Data Transfer Volume:
+Objective: Identify instances where the volume of data transferred exceeds normal patterns.
+
+SQL Query:
+
+sql
+Copy code
+SELECT username, table_name, COUNT(*) AS records_transferred
+FROM data_transfers
+GROUP BY username, table_name
+HAVING records_transferred > (SELECT AVG(records_transferred) * 2 FROM data_transfers);
+Outcome:
+
+Detected and investigated abnormal data transfer volumes for potential data exfiltration.
+2. Unencrypted Data Transfers:
+Objective: Identify data transfers that occur without encryption.
+
+SQL Query:
+
+sql
+Copy code
+SELECT username, table_name
+FROM data_transfers
+WHERE encryption = 'none';
+Outcome:
+
+Identified instances of unencrypted data transfers for remediation and encryption implementation.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
  
 <!--
  ```diff
