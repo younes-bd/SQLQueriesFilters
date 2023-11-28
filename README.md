@@ -98,7 +98,7 @@ I applied filters to SQL queries to get specific information on login attempts a
 <h2> Project Overview: </h2>
 In this project, I addressed various security concerns within the organization's systems by leveraging SQL queries with strategic filters. The goal was to identify and investigate potential security threats and streamline the process of updating employee computers.
 
-<h3> 1. Retrieve After-Hours Failed Login Attempts: </h3>
+<h2> 1. Retrieve After-Hours Failed Login Attempts: </h2>
 Objective: Investigate potential security incidents by analyzing failed login attempts after business hours.
 
 <h3> SQL Query: </h3>
@@ -121,9 +121,9 @@ WHERE login_date = '2022-05-09' OR login_date = '2022-05-08';
 ```
 
 <h3> Outcome: </h3>
-
 Retrieved login attempts on the specified dates for further investigation.
-3. Retrieve Login Attempts Outside of Mexico:
+
+<h3> 3. Retrieve Login Attempts Outside of Mexico: </h3>
 Objective: Investigate and address login attempts originating from countries other than Mexico.
 
 <h3> SQL Query: </h3>
