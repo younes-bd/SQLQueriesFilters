@@ -136,7 +136,7 @@ WHERE NOT country LIKE 'MEX%';
 <h3> Outcome: </h3>
 Identified and isolated login attempts outside of Mexico for additional scrutiny.
 
-<h3> 4. Retrieve Employees in Marketing: </h3>
+<h2> 4. Retrieve Employees in Marketing: </h2>
 Objective: Gather information on employee machines in the Marketing department located in the East building.
 
 <h3> SQL Query: </h3>
