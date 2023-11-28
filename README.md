@@ -149,7 +149,7 @@ WHERE department = 'Marketing' AND office LIKE 'East%';
 <h3> Outcome: </h3>
 Obtained a list of employees in the Marketing department in the East building for computer updates.
 
-<h3> 5. Retrieve Employees in Finance or Sales: </h3>
+<h2> 5. Retrieve Employees in Finance or Sales: </h2>
 Objective: Gather information on employee machines in the Finance or Sales departments.
 
 <h3> SQL Query: </h3>
