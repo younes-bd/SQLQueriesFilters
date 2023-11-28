@@ -93,7 +93,7 @@ I applied filters to SQL queries to get specific information on login attempts a
 <br/>
 
 
-<h1> Project Title: SQL Query Filtering for Enhanced Security </h1>
+<h1> 1. Project Title: SQL Query Filtering for Enhanced Security </h1>
 
 <h2> Project Overview: </h2>
 In this project, I addressed various security concerns within the organization's systems by leveraging SQL queries with strategic filters. The goal was to identify and investigate potential security threats and streamline the process of updating employee computers.
@@ -110,7 +110,7 @@ SELECT * FROM log_in_attempts WHERE login_time > '18:00' AND success = FALSE;
 <h3> Outcome: </h3>
 Identified and investigated after-hours failed login attempts.
 
-<h3> 2. Retrieve Login Attempts on Specific Dates: </h3>
+<h2> 2. Retrieve Login Attempts on Specific Dates: </h2>
 Objective: Investigate suspicious events on a specific date and the day before.
 
 <h3> SQL Query: </h3>
@@ -123,7 +123,7 @@ WHERE login_date = '2022-05-09' OR login_date = '2022-05-08';
 <h3> Outcome: </h3>
 Retrieved login attempts on the specified dates for further investigation.
 
-<h3> 3. Retrieve Login Attempts Outside of Mexico: </h3>
+<h2> 3. Retrieve Login Attempts Outside of Mexico: </h2>
 Objective: Investigate and address login attempts originating from countries other than Mexico.
 
 <h3> SQL Query: </h3>
@@ -162,7 +162,7 @@ WHERE department = 'Finance' OR department = 'Sales';
 <h3> Outcome: </h3>
 Compiled a list of employees in the Finance and Sales departments for specific security updates.
 
-<h3> 6. Retrieve All Employees Not in IT: </h3>
+<h2> 6. Retrieve All Employees Not in IT: </h2>
 Objective: Gather information on employees not in the Information Technology department for a distinct security update.
 
 <h3> SQL Query: </h3>
@@ -175,7 +175,7 @@ WHERE NOT department = 'Information Technology';
 <h3> Outcome: </h3>
 Identified and isolated employees not in the IT department for targeted security measures.
 
-<h3> Summary: </h3>
+<h2> Summary: </h2>
 I applied targeted filters to SQL queries to extract specific information related to login attempts and employee machines. The use of AND, OR, and NOT operators, along with LIKE and wildcards, allowed for precise data retrieval, enhancing the organization's overall cybersecurity posture.
 
 
