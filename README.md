@@ -401,7 +401,113 @@ Detected and investigated emails with attachments of executable file types, pote
 This project significantly contributed to the organization's cybersecurity by analyzing email logs for potential phishing threats. Identification of unusual email sending patterns and detection of emails with suspicious attachments allowed for prompt investigation and mitigation of potential phishing attempts, thereby enhancing email security.
 
 
+<h1> Project Title: Network Anomaly Detection </h1>
 
+<h2> Project Overview: </h2>
+Implemented SQL queries to monitor network traffic and detect anomalies indicative of security breaches.
+
+<h2> 1. Unusual Protocol Usage: </h2>
+Objective: Identify instances of uncommon network protocols being used.
+
+<h3> SQL Query: </h3>
+
+```
+SELECT source_ip, destination_ip, protocol
+FROM network_traffic
+WHERE protocol NOT IN ('HTTP', 'HTTPS', 'TCP', 'UDP');
+```
+
+<h3> Outcome: </h3>
+Detected and investigated instances of non-standard protocols, potentially indicating malicious activity.
+
+<h2> 2. High Volume Outbound Connections: </h2>
+Objective: Monitor for high volumes of outbound connections from a single source.
+
+<h3> SQL Query: </h3>
+
+```
+SELECT source_ip, COUNT(destination_ip) AS connection_count
+FROM network_traffic
+GROUP BY source_ip
+HAVING connection_count > 1000;
+```
+
+<h3> Outcome: </h3>
+Identified and investigated sources generating an unusually high volume of outbound connections.
+
+<h2> Summary: </h2>
+By leveraging SQL queries to analyze network traffic, I successfully detected and investigated anomalies in protocol usage and outbound connections. This proactive approach to network anomaly detection contributed to early threat identification and mitigation.
+
+<h1> Project Title: Cloud Security Assessment </h1>
+
+<h2> Project Overview: </h2>
+Conducted a security assessment of the organization's cloud infrastructure using SQL queries.
+
+<h2> 1. Unauthorized Access to Cloud Resources: </h2>
+Objective: Identify instances of unauthorized access to cloud resources.
+
+<h3> SQL Query: </h3>
+
+```
+SELECT username, resource_name
+FROM cloud_access_logs
+WHERE access_status = 'unauthorized';
+```
+<h3> Outcome: </h3>
+Detected and investigated instances of unauthorized access to cloud resources.
+
+<h2> 2. Insecurely Configured Buckets: </h2>
+Objective: Identify cloud storage buckets with insecure configurations.
+
+<h3> SQL Query: </h3>
+
+```
+SELECT bucket_name, public_access
+FROM cloud_storage_buckets
+WHERE public_access = 'true';
+```
+
+<h3> Outcome: </h3>
+Identified and secured cloud storage buckets with unintentional public access.
+
+<h2> Summary: </h2>
+This project focused on assessing and enhancing the security of the organization's cloud infrastructure. By identifying and addressing unauthorized access and insecurely configured resources, I contributed to bolstering the overall security posture of the cloud environment.
+
+<h1> Project Title: Mobile Device Security Analysis </h1>
+
+<h2> Project Overview: </h2>
+Used SQL queries to assess the security of mobile devices connected to the organization's network.
+
+<h2> 1. Unauthorized Devices: </h2>
+Objective: Identify mobile devices not authorized to connect to the corporate network.
+
+<h3> SQL Query: </h3>
+
+```
+SELECT device_name, device_type
+FROM mobile_devices
+WHERE authorized = 'false';
+```
+
+<h3> Outcome: </h3>
+Detected unauthorized mobile devices connected to the corporate network.
+
+<h2> 2. Outdated Operating Systems: </h2>
+Objective: Identify mobile devices with outdated operating systems.
+
+<h3> SQL Query: </h3>
+
+```
+SELECT device_name, operating_system_version
+FROM mobile_devices
+WHERE operating_system_version < 'latest_version';
+```
+
+<h3> Outcome: </h3>
+Identified devices with outdated operating systems for timely updates.
+
+<h2> Summary: </h2>
+By leveraging SQL queries to analyze mobile device data, I successfully identified and addressed security risks. Detection of unauthorized devices and devices with outdated operating systems contributed to a more secure mobile device environment.
 
 
 
