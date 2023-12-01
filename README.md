@@ -4,10 +4,10 @@
 My organization is working to make their system more secure. It is my job to ensure the system is safe, investigate all potential security issues, and update employee computers as needed. The following steps provide examples of how I used SQL with filters to perform security-related tasks.
 <br />
 
-<h2> Languages and Utilities Used</h2>
+<h2> Languages and Utilities Used </h2>
 
-- <b>PowerShell</b> 
-- <b>Diskpart</b>
+- <b> PowerShell </b> 
+- <b> Diskpart </b>
 
 <h2>Environments Used </h2>
 
@@ -184,102 +184,221 @@ Certainly! Here are a few more examples of cybersecurity-related projects that i
 
 <h1> 2. Project Title: User Privilege Analysis </h1>
 
-<h3> Project Overview: </h3>
+<h2> Project Overview: </h2>
 To strengthen user access controls, I conducted an analysis of user privileges within the organization's database. The goal was to identify and address any unnecessary or elevated permissions.
 
-<h3> 1. Identify Superuser Accounts: </h3>
+<h2> 1. Identify Superuser Accounts: </h2>
 Objective: Locate accounts with superuser privileges for potential security risks.
 
-SQL Query:
+<h3> SQL Query: </h3>
 
-sql
-Copy code
+```
 SELECT username, privilege_level
 FROM user_accounts
 WHERE privilege_level = 'superuser';
-Outcome:
+```
 
+<h3> Outcome: </h3>
 Compiled a list of accounts with superuser privileges for further review and potential privilege reduction.
-2. Unused Accounts Cleanup:
+
+<h2> 2. Unused Accounts Cleanup: </h2>
 Objective: Identify and deactivate user accounts that have not been used for an extended period.
 
-SQL Query:
+<h3> SQL Query: </h3>
 
-sql
-Copy code
+```
 SELECT username, last_login
 FROM user_accounts
 WHERE last_login < '2023-01-01';
-Outcome:
-
+```
+<h3> Outcome: </h3>
 Identified dormant accounts for deactivation, reducing the potential attack surface.
-Project Title: Anomaly Detection in Network Traffic
-Project Overview:
+
+
+<h1> 3. Project Title: Anomaly Detection in Network Traffic </h1>
+
+<h2> Project Overview: </h2>
 Implemented SQL queries to analyze network traffic logs for anomalies, helping to identify potential security threats or irregularities.
 
-1. Unusual Outbound Traffic:
+<h2> 1. Unusual Outbound Traffic: </h2>
 Objective: Identify outbound network traffic patterns that deviate from the norm.
 
-SQL Query:
+<h3> SQL Query: </h3>
 
-sql
-Copy code
+```
 SELECT source_ip, destination_ip, protocol
 FROM network_logs
 WHERE destination_ip NOT IN (SELECT trusted_ip FROM whitelist);
-Outcome:
+```
 
+<h3> Outcome: </h3>
 Detected and investigated unusual outbound traffic, possibly indicating a compromised system.
-2. Multiple Login Attempts from Different Locations:
+
+<h2> 2. Multiple Login Attempts from Different Locations: </h2>
 Objective: Identify instances of multiple login attempts from geographically distinct locations in a short timeframe.
 
-SQL Query:
+<h3> SQL Query: </h3>
 
-sql
-Copy code
+```
 SELECT username, source_ip, COUNT(DISTINCT location) AS distinct_locations
 FROM login_attempts
 GROUP BY username, source_ip
 HAVING distinct_locations > 1;
-Outcome:
+```
 
+<h3> Outcome: </h3>
 Detected suspicious login patterns for further investigation and potential account compromise.
-Project Title: Data Exfiltration Detection
-Project Overview:
+
+
+<h1> 4.Project Title: Data Exfiltration Detection </h1>
+
+<h2> Project Overview: </h2>
 Implemented SQL queries to monitor and detect potential data exfiltration attempts from the organization's databases.
 
-1. Unusual Data Transfer Volume:
+<h2> 1. Unusual Data Transfer Volume: </h2>
 Objective: Identify instances where the volume of data transferred exceeds normal patterns.
 
-SQL Query:
+<h3> SQL Query: </h3>
 
-sql
-Copy code
+```
 SELECT username, table_name, COUNT(*) AS records_transferred
 FROM data_transfers
 GROUP BY username, table_name
 HAVING records_transferred > (SELECT AVG(records_transferred) * 2 FROM data_transfers);
-Outcome:
+```
 
+<h3> Outcome: </h3>
 Detected and investigated abnormal data transfer volumes for potential data exfiltration.
-2. Unencrypted Data Transfers:
+
+<h2> 2. Unencrypted Data Transfers: </h2>
 Objective: Identify data transfers that occur without encryption.
 
-SQL Query:
+<h3> SQL Query: </h3>
 
-sql
-Copy code
+```
 SELECT username, table_name
 FROM data_transfers
 WHERE encryption = 'none';
-Outcome:
+```
 
+<h3> Outcome: </h3>
 Identified instances of unencrypted data transfers for remediation and encryption implementation.
 
 
 
 
+<h1> Project Title: Insider Threat Detection </h1>
 
+<h2> Project Overview: </h2>
+Implemented SQL queries to monitor user behavior and identify potential insider threats within the organization's network.
+
+<h3> 1. Unusual File Access Patterns: </h3>
+Objective: Detect patterns of unusual file access that might indicate an insider threat.
+
+<h3> SQL Query: </h3>
+
+```
+SELECT username, file_path
+FROM file_access_logs
+WHERE access_time < NOW() - INTERVAL 1 DAY
+GROUP BY username
+HAVING COUNT(DISTINCT file_path) > 50;
+```
+
+<h3> Outcome: </h3>
+Identified users with abnormally high file access activity for further investigation.
+
+<h2> 2. Data Exfiltration Indicators: </h2>
+Objective: Monitor and identify potential data exfiltration attempts.
+
+<h3> SQL Query: </h3>
+
+```
+SELECT username, destination_ip, data_size
+FROM data_transfers
+WHERE data_size > (SELECT AVG(data_size) * 2 FROM data_transfers);
+```
+
+<h3> Outcome: </h3>
+Detected and investigated data transfers with unusually large sizes, indicating potential data exfiltration.
+
+<h2> Summary: </h2>
+By implementing SQL queries to monitor user behavior, I successfully identified patterns indicative of insider threats. Swift action was taken to investigate and mitigate risks associated with unusual file access patterns and potential data exfiltration attempts, contributing to an enhanced insider threat detection system.
+
+
+<h1> Project Title: Security Compliance Auditing  </h1>
+
+<h2> Project Overview: </h2>
+Utilized SQL queries to conduct security compliance audits and ensure adherence to industry standards.
+
+<h2> 1. Password Policy Compliance: </h2>
+Objective: Ensure compliance with the organization's password policy.
+
+<h3> SQL Query: </h3>
+
+```
+SELECT username, last_password_change
+FROM user_accounts
+WHERE last_password_change < NOW() - INTERVAL 90 DAY;
+```
+
+<h3> Outcome: </h3>
+Identified users whose passwords were not changed within the specified timeframe, enforcing password policy compliance.
+
+<h2> 2. Encryption Status Assessment: </h2>
+Objective: Verify the encryption status of sensitive data in the database.
+
+<h3> SQL Query: </h3>
+
+```
+SELECT table_name, encryption_status
+FROM sensitive_data_tables
+WHERE encryption_status = 'not encrypted';
+```
+
+<h3> Outcome: </h3>
+Ensured that sensitive data tables were encrypted, maintaining compliance with security standards.
+
+<h2> Summary: </h2>
+Through meticulous security compliance auditing using SQL queries, I verified and enforced adherence to password policies and encryption standards. This project not only ensured a more secure environment but also facilitated ongoing compliance with industry regulations.
+
+
+<h1> Project Title: Phishing Email Analysis </h1>
+
+<h2> Project Overview: </h2>
+Implemented SQL queries to analyze email logs and detect potential phishing attempts.
+
+<h1> 1. Unusual Email Sending Patterns: </h1>
+Objective: Identify unusual patterns in email sending that may indicate phishing.
+
+<h3> SQL Query: </h3>
+
+```
+SELECT sender, recipient, COUNT(*) AS email_count
+FROM email_logs
+GROUP BY sender, recipient
+HAVING email_count > 100;
+```
+
+<h3> Outcome: </h3>
+Detected instances of users sending a high volume of emails to different recipients for investigation.
+
+<h2> 2. Malicious Attachment Detection: </h2>
+Objective: Identify emails with potentially malicious attachments.
+
+<h3> SQL Query: </h3>
+
+```
+SELECT sender, subject, attachment_name
+FROM email_logs
+WHERE attachment_type = 'executable';
+```
+
+<h3> Outcome: </h3>
+Detected and investigated emails with attachments of executable file types, potentially indicating malicious activity.
+
+<h2> Summary: </h2>
+This project significantly contributed to the organization's cybersecurity by analyzing email logs for potential phishing threats. Identification of unusual email sending patterns and detection of emails with suspicious attachments allowed for prompt investigation and mitigation of potential phishing attempts, thereby enhancing email security.
 
 
 
