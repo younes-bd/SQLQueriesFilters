@@ -621,7 +621,111 @@ Reviewed changes in password update behaviors to assess the impact of security a
 Through the analysis of simulated exercises and real-world data, this project assessed the impact of security awareness training. Identification of areas needing improvement and positive changes in password hygiene demonstrated the effectiveness of the training program.
 
 
+<h1> Project 7: Threat Intelligence Integration </h1>
+<h2> Project Overview: </h2>
+Integrated threat intelligence feeds into the organization's security infrastructure using SQL queries for proactive threat detection.
 
+<h2> 1. Known Malicious IP Identification: </h2>
+Objective: Identify and tag incoming network traffic from known malicious IP addresses.
+
+<h3> SQL Query: </h3>
+
+```
+SELECT source_ip, destination_ip, threat_level
+FROM threat_intelligence
+WHERE threat_level = 'high';
+```
+<h3> Outcome: </h3>
+Integrated threat intelligence data to identify and prioritize potential threats from high-risk IP addresses.
+
+<h2> 2. Malware Signature Matching: </h2>
+Objective: Enhance endpoint security by matching file hashes with threat intelligence data.
+
+<h3> SQL Query: </h3>
+
+```
+SELECT file_name, file_hash, threat_description
+FROM endpoint_security_logs
+WHERE file_hash IN (SELECT distinct file_hash FROM threat_intelligence);
+```
+
+<h3> Outcome: </h3>
+Improved malware detection capabilities by cross-referencing file hashes with threat intelligence information.
+
+<h2> Summary: </h2>
+This project significantly improved the organization's threat detection capabilities by integrating threat intelligence data. The identification of known malicious IP addresses and malware signatures contributed to a more proactive and responsive security posture.
+
+
+<h1> Project 8: Incident Response Automation </h1>
+
+<h2> Project Overview: </h2>
+Utilized SQL queries to automate certain aspects of the incident response process for faster and more efficient handling of security incidents.
+
+<h2> 1. Rapid User Account Locking: </h2>
+Objective: Automatically lock user accounts exhibiting suspicious behavior.
+
+<h3> SQL Query: </h3>
+
+```
+UPDATE user_accounts
+SET account_status = 'locked'
+WHERE failed_login_attempts > 5 AND last_login < NOW() - INTERVAL 1 HOUR;
+```
+
+<h3> Outcome: </h3>
+Automated the response to potential account compromise incidents by swiftly locking affected user accounts.
+
+<h2> 2. Isolation of Compromised Systems: </h2>
+Objective: Automate the isolation of systems showing signs of compromise.
+
+<h3> SQL Query: </h3>
+
+```
+UPDATE network_devices
+SET isolation_status = 'isolated'
+WHERE threat_level = 'critical';
+```
+
+<h3> Outcome: </h3>
+Automated the isolation of network devices identified as critical threats for immediate containment.
+
+<h2> Summary: </h2>
+The implementation of SQL queries for incident response automation streamlined the organization's ability to respond to security incidents. The automated locking of compromised accounts and isolation of critical network devices contributed to a more efficient incident response process.
+
+<h1> Project 9: Security Dashboard Development </h1>
+
+<h2> Project Overview: </h2>
+Developed a comprehensive security dashboard using SQL queries to provide real-time insights into the organization's security posture.
+
+<h2> 1. Threat Landscape Overview: </h2>
+Objective: Display a real-time overview of the organization's threat landscape.
+
+<h3> SQL Query: </h3>
+
+```
+SELECT threat_level, COUNT(*) AS threat_count
+FROM security_events
+GROUP BY threat_level;
+```
+<h3> Outcome: </h3>
+Created a visualization of the current threat landscape based on the severity of security events.
+
+<h2> 2. User Authentication Trends: </h2>
+Objective: Monitor and display trends in user authentication success and failure rates.
+
+<h3> SQL Query: </h3>
+
+```
+SELECT date, successful_logins, failed_logins
+FROM authentication_logs
+WHERE date >= '2023-01-01';
+```
+
+<h3> Outcome: </h3>
+Visualized user authentication trends to identify potential security issues.
+
+<h2> Summary: </h2>
+The development of the security dashboard provided real-time insights into the organization's security posture. The visualization of the threat landscape and user authentication trends empowered security teams with actionable information for timely decision-making.
 
 
 
