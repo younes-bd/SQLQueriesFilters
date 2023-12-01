@@ -510,7 +510,115 @@ Identified devices with outdated operating systems for timely updates.
 By leveraging SQL queries to analyze mobile device data, I successfully identified and addressed security risks. Detection of unauthorized devices and devices with outdated operating systems contributed to a more secure mobile device environment.
 
 
+<h1> Project 4: Insider Threat Detection Enhancement </h1>
 
+<h2> Project Overview: </h2>
+Implemented advanced SQL queries to enhance the organization's capability to detect and respond to insider threats.
+
+<h2> 1. Behavior Anomalies: </h2>
+Objective: Identify abnormal user behavior patterns that may indicate an insider threat.
+
+<h2> SQL Query: </h2>
+
+```
+SELECT username, activity_type, COUNT(*) AS activity_count
+FROM user_activity_logs
+GROUP BY username, activity_type
+HAVING activity_count > 100;\
+```
+
+<h2> Outcome: </h2>
+Detected and investigated users exhibiting abnormal patterns of activity for potential insider threats.
+
+<h2> 2. Data Exfiltration Patterns: </h2>
+Objective: Monitor data access and identify patterns indicative of potential data exfiltration.
+
+<h3> SQL Query: </h3>
+
+```
+SELECT username, destination_ip, data_size
+FROM data_transfers
+WHERE data_size > (SELECT AVG(data_size) * 2 FROM data_transfers);
+```
+
+<h3> Outcome: </h3>
+Identified and investigated instances of data transfers with unusually large sizes, suggesting potential data exfiltration.
+
+<h2> Summary: </h2>
+By applying advanced SQL queries, I significantly improved the organization's ability to detect insider threats. The identification of abnormal behavior and potential data exfiltration patterns provided valuable insights for swift response and mitigation.
+
+<h1> Project 5: Endpoint Security Analysis </h1>
+
+<h2> Project Overview: </h2>
+Utilized SQL queries to analyze endpoint security logs and strengthen the organization's overall security posture.
+
+<h2> 1. Malware Detection: </h2>
+Objective: Identify systems with signs of potential malware infections.
+
+<h3> SQL Query: </h3>
+
+```
+SELECT system_name, malware_signature
+FROM endpoint_security_logs
+WHERE detection_status = 'infected';
+```
+
+<h3> Outcome: </h3>
+Detected and isolated systems with indications of malware infections for further analysis and remediation.
+
+<h2> 2. Unusual Application Activity: </h2>
+Objective: Monitor for unusual activity related to applications on endpoints.
+
+<h3> SQL Query: </h3>
+
+```
+SELECT system_name, application_name, activity_type
+FROM endpoint_activity_logs
+WHERE activity_type = 'unusual';
+```
+
+<h3> Outcome: </h3>
+Identified and investigated endpoints exhibiting unusual application-related activities.
+
+<h3> Summary: </h3>
+This project focused on enhancing endpoint security through SQL query analysis. The identification of malware infections and unusual application activities allowed for prompt responses, improving the overall resilience of endpoint security.
+
+
+<h1> Project 6: Security Awareness Training Evaluation </h1>
+
+<h2> Project Overview: </h2>
+Utilized SQL queries to assess the effectiveness of the organization's security awareness training program.
+
+<h2> 1. Phishing Simulation Results: </h2>
+Objective: Analyze results from simulated phishing exercises to evaluate user awareness.
+
+<h3> SQL Query: </h3>
+
+```
+SELECT username, clicked_links
+FROM phishing_simulation_results
+WHERE clicked_links > 0;
+```
+
+<h3> Outcome: </h3>
+Analyzed data on users who clicked on simulated phishing links to identify areas for improvement in security awareness training.
+
+<h2> 2. Password Hygiene: </h2>
+Objective: Evaluate improvements in password hygiene post-training.
+
+<h3> SQL Query: </h3>
+
+```
+SELECT username, last_password_change
+FROM user_accounts
+WHERE last_password_change >= '2023-01-01';
+```
+
+<h3> Outcome: </h3>
+Reviewed changes in password update behaviors to assess the impact of security awareness training.
+
+<h2> Summary: </h2>
+Through the analysis of simulated exercises and real-world data, this project assessed the impact of security awareness training. Identification of areas needing improvement and positive changes in password hygiene demonstrated the effectiveness of the training program.
 
 
 
