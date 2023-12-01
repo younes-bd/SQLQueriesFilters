@@ -292,7 +292,7 @@ Identified instances of unencrypted data transfers for remediation and encryptio
 <h2> Project Overview: </h2>
 Implemented SQL queries to monitor user behavior and identify potential insider threats within the organization's network.
 
-<h3> 1. Unusual File Access Patterns: </h3>
+<h2> 1. Unusual File Access Patterns: </h2>
 Objective: Detect patterns of unusual file access that might indicate an insider threat.
 
 <h3> SQL Query: </h3>
